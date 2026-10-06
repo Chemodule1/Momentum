@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MOMENTUM — Personal Progress</title>
+
+<style>
+:root {
+    --bg: #020606;
+    --card: #071212;
+    --card2: #0b1b1a;
+    --aqua: #00ffd5;
+    --aqua-dark: #00b89f;
+    --text: #eafff9;
+    --muted: #71958f;
+    --danger: #ff5277;
+    --success: #00ffd5;
+    --border: rgba(0,255,213,0.18);
+    --shadow: 0 0 30px rgba(0,255,213,0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,255,213,0.09),
+            transparent 35%
+        ),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+#loginScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 440px;
+    padding: 42px 32px;
+    border-radius: 24px;
+
+    background: rgba(5,14,14,0.96);
+
+    border: 1px solid rgba(0,255,213,0.3);
+
+    box-shadow:
+        0 0 50px rgba(0,255,213,0.12),
+        inset 0 0 30px rgba(0,255,213,0.02);
+
+    text-align: center;
+}
+
+.logo {
+    font-size: 44px;
+    font-weight: bold;
+    letter-spacing: 9px;
+    color: var(--aqua);
+
+    text-shadow:
+        0 0 10px rgba(0,255,213,0.7),
+        0 0 25px rgba(0,255,213,0.35);
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.password-input {
+    width: 100%;
+    padding: 15px 52px 15px 16px;
+
+    background: #020606;
+
+    color: white;
+
+    border: 1px solid rgba(0,255,213,0.25);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+.password-input:focus {
+    border-color: var(--aqua);
+
+    box-shadow:
+        0 0 18px rgba(0,255,213,0.16);
+}
+
+.eye {
+    position: absolute;
+
+    right: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--aqua);
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    user-select: none;
+}
+
+.main-btn {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 14px;
+
+    background: rgba(0,255,213,0.07);
+
+    color: var(--aqua);
+
+    border: 1px solid var(--aqua);
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.main-btn:hover {
+    background: var(--aqua);
+
+    color: #00100d;
+
+    box-shadow:
+        0 0 30px rgba(0,255,213,0.4);
+}
+
+.error {
+    min-height: 22px;
+
+    margin-top: 12px;
+
+    color: var(--danger);
+
+    font-size: 13px;
+}
+
+.login-note {
+    color: #52716d;
+
+    font-size: 11px;
+
+    margin-top: 25px;
+
+    line-height: 1.5;
+}
+
+/* =====================================================
+   APP
+===================================================== */
+
+#app {
+    display: none;
+}
+
+header {
+    padding: 20px 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(0,255,213,0.12);
+}
+
+.header-logo {
+    color: var(--aqua);
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 15px rgba(0,255,213,0.5);
+}
+
+.header-date {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.container {
+    width: 88%;
+
+    max-width: 1250px;
+
+    margin: 35px auto 60px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    padding: 35px;
+
+    border-radius: 22px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,255,213,0.075),
+            rgba(0,0,0,0.2)
+        );
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 24px;
+}
+
+.hero h1 {
+    font-size: clamp(32px,5vw,52px);
+
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: var(--aqua);
+
+    text-shadow:
+        0 0 18px rgba(0,255,213,0.5);
+}
+
+.hero-description {
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+/* =====================================================
+   MISSION
+===================================================== */
+
+.mission {
+    margin-top: 25px;
+
+    padding: 22px;
+
+    border-left:
+        3px solid var(--aqua);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,255,213,0.035);
+}
+
+.mission-label {
+    color: var(--aqua);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
+}
+
+.mission-text {
+    font-size: 19px;
+
+    line-height: 1.65;
+
+    font-style: italic;
+}
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.card {
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow: var(--shadow);
+}
+
+.stat-label {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+}
+
+.stat-number {
+    color: var(--aqua);
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 14px rgba(0,255,213,0.4);
+}
+
+.stat-small {
+    color: #557a74;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+}
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote-card {
+    text-align: center;
+
+    padding: 38px;
+
+    margin-bottom: 24px;
+}
+
+.quote-label {
+    color: var(--aqua);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+}
+
+.quote {
+    max-width: 850px;
+
+    margin: auto;
+
+    font-size: 22px;
+
+    line-height: 1.65;
+}
+
+.quote-date {
+    color: var(--muted);
+
+    margin-top: 18px;
+
+    font-size: 12px;
+}
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+.calendar-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.calendar-title {
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+.calendar-controls {
+    display: flex;
+
+    gap: 8px;
+}
+
+.small-btn {
+    padding: 8px 13px;
+
+    border:
+        1px solid rgba(0,255,213,0.3);
+
+    background: transparent;
+
+    color: var(--aqua);
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.small-btn:hover {
+    background:
+        rgba(0,255,213,0.1);
+}
+
+.calendar {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap: 8px;
+}
+
+.day-name {
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    padding: 8px 0;
+}
+
+.day {
+    min-height: 65px;
+
+    padding: 8px;
+
+    background: #040b0b;
+
+    border:
+        1px solid rgba(0,255,213,0.1);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition: 0.2s;
+}
+
+.day:hover {
+    border-color:
+        rgba(0,255,213,0.55);
+
+    transform: translateY(-2px);
+}
+
+.day-number {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.day.completed {
+    background:
+        rgba(0,255,213,0.12);
+
+    border-color:
+        var(--aqua);
+
+    box-shadow:
+        0 0 14px rgba(0,255,213,0.2);
+}
+
+.day.completed::after {
+    content: "✓";
+
+    position: absolute;
+
+    right: 8px;
+
+    bottom: 7px;
+
+    color: var(--aqua);
+
+    font-weight: bold;
+}
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-section {
+    margin-top: 24px;
+}
+
+.progress-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.progress-percentage {
+    color: var(--aqua);
+}
+
+.progress-bar {
+    height: 13px;
+
+    margin-top: 15px;
+
+    background: #020606;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(0,255,213,0.15);
+}
+
+.progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background: var(--aqua);
+
+    box-shadow:
+        0 0 18px rgba(0,255,213,0.7);
+
+    transition: width 0.5s;
+}
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.settings-card {
+    margin-top: 24px;
+}
+
+.settings-title {
+    color: var(--aqua);
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+}
+
+.settings-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.setting-btn {
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid rgba(0,255,213,0.3);
+
+    color: var(--aqua);
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.setting-btn:hover {
+    background:
+        rgba(0,255,213,0.08);
+}
+
+.danger-btn {
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    border:
+        1px solid rgba(255,82,119,0.5);
+
+    color: #ff7793;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.danger-btn:hover {
+    background:
+        rgba(255,82,119,0.1);
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.78);
+
+    backdrop-filter: blur(7px);
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.modal-box {
+    width: 100%;
+
+    max-width: 440px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+        #071212;
+
+    border:
+        1px solid rgba(0,255,213,0.3);
+
+    box-shadow:
+        0 0 50px rgba(0,255,213,0.15);
+}
+
+.modal-title {
+    color: var(--aqua);
+
+    font-size: 22px;
+
+    margin-bottom: 8px;
+}
+
+.modal-description {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 22px;
+}
+
+.modal-input {
+    position: relative;
+
+    margin-bottom: 12px;
+}
+
+.modal-input input {
+    width: 100%;
+
+    padding: 13px 48px 13px 14px;
+
+    background: #020606;
+
+    color: white;
+
+    border:
+        1px solid rgba(0,255,213,0.22);
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.modal-input input:focus {
+    border-color: var(--aqua);
+}
+
+.modal-eye {
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    color: var(--aqua);
+
+    user-select: none;
+}
+
+.modal-message {
+    min-height: 20px;
+
+    color: var(--danger);
+
+    font-size: 12px;
+
+    margin: 8px 0;
+}
+
+.modal-actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+.modal-actions button {
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.save-password {
+    background:
+        rgba(0,255,213,0.08);
+
+    color: var(--aqua);
+
+    border:
+        1px solid var(--aqua);
+}
+
+.cancel-password {
+    background: transparent;
+
+    color: var(--muted);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px) {
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .container {
+        width: 94%;
+    }
+
+    header {
+        padding: 18px 4%;
+    }
+
+    .header-logo {
+        font-size: 20px;
+    }
+
+    .header-date {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 24px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .stat-number {
+        font-size: 30px;
+    }
+
+    .quote {
+        font-size: 18px;
+    }
+
+    .quote-card {
+        padding: 27px 18px;
+    }
+
+    .calendar {
+        gap: 4px;
+    }
+
+    .day {
+        min-height: 48px;
+        padding: 5px;
+    }
+
+    .mission-text {
+        font-size: 16px;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/* =====================================================
+   HIDDEN UTILITY
+===================================================== */
+
+.hidden {
+    display: none !important;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<section id="loginScreen">
+
+    <div class="login-box">
+
+        <div class="logo">
+            MOMENTUM
+        </div>
+
+        <div class="subtitle">
+            Personal Progress System
+        </div>
+
+        <div class="input-container">
+
+            <input
+                id="passwordInput"
+                class="password-input"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="off"
+            >
+
+            <span
+                class="eye"
+                id="loginEye"
+                onclick="toggleLoginPassword()"
+                title="Show password"
+            >
+                👁
+            </span>
+
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="login()"
+        >
+            ENTER
+        </button>
+
+        <div
+            class="error"
+            id="loginError"
+        ></div>
+
+        <div class="login-note">
+            Your personal progress is stored locally in this browser.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
+
+<div id="app">
+
+<header>
+
+    <div class="header-logo">
+        MOMENTUM
+    </div>
+
+    <div
+        class="header-date"
+        id="headerDate"
+    ></div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            Build your
+            <span>momentum.</span>
+        </h1>
+
+        <div class="hero-description">
+            One day at a time. One decision at a time.
+        </div>
+
+
+        <div class="mission">
+
+            <div class="mission-label">
+                YOUR MISSION
+            </div>
+
+            <div class="mission-text">
+                “My goal is to help the poor.
+                To do that, I must be financially stable.”
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="card">
+
+            <div class="stat-label">
+                CURRENT STREAK
+            </div>
+
+            <div
+                class="stat-number"
+                id="currentStreak"
+            >
+                0
+            </div>
+
+            <div class="stat-small">
+                days
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="stat-label">
+                BEST STREAK
+            </div>
+
+            <div
+                class="stat-number"
+                id="bestStreak"
+            >
+                0
+            </div>
+
+            <div class="stat-small">
+                days
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="stat-label">
+                TOTAL DAYS
+            </div>
+
+            <div
+                class="stat-number"
+                id="totalDays"
+            >
+                0
+            </div>
+
+            <div class="stat-small">
+                completed
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="stat-label">
+                NEXT MILESTONE
+            </div>
+
+            <div
+                class="stat-number"
+                id="milestone"
+            >
+                7
+            </div>
+
+            <div class="stat-small">
+                days
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="card quote-card">
+
+        <div class="quote-label">
+            DAILY MOMENTUM
+        </div>
+
+        <div
+            class="quote"
+            id="dailyQuote"
+        >
+            Loading...
+        </div>
+
+        <div
+            class="quote-date"
+            id="quoteDate"
+        ></div>
+
+    </section>
+
+
+    <!-- CALENDAR -->
+
+    <section class="card">
+
+        <div class="calendar-header">
+
+            <div
+                class="calendar-title"
+                id="calendarTitle"
+            >
+                Progress
+            </div>
+
+            <div class="calendar-controls">
+
+                <button
+                    class="small-btn"
+                    onclick="changeMonth(-1)"
+                >
+                    ←
+                </button>
+
+                <button
+                    class="small-btn"
+                    onclick="goToday()"
+                >
+                    Today
+                </button>
+
+                <button
+                    class="small-btn"
+                    onclick="changeMonth(1)"
+                >
+                    →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="calendar"
+            id="calendar"
+        ></div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card progress-section">
+
+        <div class="progress-top">
+
+            <span>
+                Overall progress
+            </span>
+
+            <span
+                class="progress-percentage"
+                id="progressText"
+            >
+                0%
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SETTINGS -->
+
+    <section class="card settings-card">
+
+        <div class="settings-title">
+            SETTINGS
+        </div>
+
+        <div class="settings-buttons">
+
+            <button
+                class="setting-btn"
+                onclick="openPasswordModal()"
+            >
+                🔐 Change Password
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="resetData()"
+            >
+                Reset Progress
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     CHANGE PASSWORD MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="passwordModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Change Password
+        </div>
+
+        <div class="modal-description">
+            Create a new password for this browser.
+            Choose something you don't use on other accounts.
+        </div>
+
+
+        <!-- CURRENT PASSWORD -->
+
+        <div class="modal-input">
+
+            <input
+                id="currentPassword"
+                type="password"
+                placeholder="Current password"
+            >
+
+            <span
+                class="modal-eye"
+                onclick="toggleModalPassword(
+                    'currentPassword',
+                    'currentEye'
+                )"
+                id="currentEye"
+            >
+                👁
+            </span>
+
+        </div>
+
+
+        <!-- NEW PASSWORD -->
+
+        <div class="modal-input">
+
+            <input
+                id="newPassword"
+                type="password"
+                placeholder="New password"
+            >
+
+            <span
+                class="modal-eye"
+                onclick="toggleModalPassword(
+                    'newPassword',
+                    'newEye'
+                )"
+                id="newEye"
+            >
+                👁
+            </span>
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="modal-input">
+
+            <input
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm new password"
+            >
+
+            <span
+                class="modal-eye"
+                onclick="toggleModalPassword(
+                    'confirmPassword',
+                    'confirmEye'
+                )"
+                id="confirmEye"
+            >
+                👁
+            </span>
+
+        </div>
+
+
+        <div
+            class="modal-message"
+            id="passwordMessage"
+        ></div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="save-password"
+                onclick="changePassword()"
+            >
+                Save Password
+            </button>
+
+            <button
+                class="cancel-password"
+                onclick="closePasswordModal()"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   MOMENTUM JAVASCRIPT
+===================================================== */
+
+
+/* =====================================================
+   PASSWORD SYSTEM
+===================================================== */
+
+/*
+    The first password used by this version.
+
+    After you change it through Settings,
+    the new password is saved locally.
+*/
+
+const DEFAULT_PASSWORD = "Momentum2026";
+
+const PASSWORD_KEY =
+    "momentum_password_v1";
+
+
+function getPassword() {
+
+    const saved =
+        localStorage.getItem(PASSWORD_KEY);
+
+    if (saved) {
+        return saved;
+    }
+
+    return DEFAULT_PASSWORD;
+}
+
+
+/* =====================================================
+   LOGIN PASSWORD EYE
+===================================================== */
+
+function toggleLoginPassword() {
+
+    const input =
+        document.getElementById("passwordInput");
+
+    const eye =
+        document.getElementById("loginEye");
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        eye.textContent = "🙈";
+
+        eye.title = "Hide password";
+
+    } else {
+
+        input.type = "password";
+
+        eye.textContent = "👁";
+
+        eye.title = "Show password";
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login() {
+
+    const entered =
+        document.getElementById("passwordInput")
+        .value;
+
+    const error =
+        document.getElementById("loginError");
+
+
+    if (entered === getPassword()) {
+
+        document.getElementById("loginScreen")
+            .style.display = "none";
+
+        document.getElementById("app")
+            .style.display = "block";
+
+        initialize();
+
+    } else {
+
+        error.textContent =
+            "Incorrect password.";
+
+    }
+
+}
+
+
+/* ENTER KEY */
+
+document
+.getElementById("passwordInput")
+.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+            login();
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CHANGE PASSWORD MODAL
+===================================================== */
+
+function openPasswordModal() {
+
+    document.getElementById("passwordModal")
+        .style.display = "flex";
+
+    document.getElementById("currentPassword")
+        .value = "";
+
+    document.getElementById("newPassword")
+        .value = "";
+
+    document.getElementById("confirmPassword")
+        .value = "";
+
+    document.getElementById("passwordMessage")
+        .textContent = "";
+
+}
+
+
+function closePasswordModal() {
+
+    document.getElementById("passwordModal")
+        .style.display = "none";
+
+}
+
+
+function toggleModalPassword(
+    inputId,
+    eyeId
+) {
+
+    const input =
+        document.getElementById(inputId);
+
+    const eye =
+        document.getElementById(eyeId);
+
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        eye.textContent = "🙈";
+
+    } else {
+
+        input.type = "password";
+
+        eye.textContent = "👁";
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE PASSWORD
+===================================================== */
+
+function changePassword() {
+
+    const current =
+        document.getElementById(
+            "currentPassword"
+        ).value;
+
+    const newPassword =
+        document.getElementById(
+            "newPassword"
+        ).value;
+
+    const confirm =
+        document.getElementById(
+            "confirmPassword"
+        ).value;
+
+    const message =
+        document.getElementById(
+            "passwordMessage"
+        );
+
+
+    /* Current password check */
+
+    if (current !== getPassword()) {
+
+        message.textContent =
+            "Current password is incorrect.";
+
+        return;
+
+    }
+
+
+    /* Minimum password length */
+
+    if (newPassword.length < 6) {
+
+        message.textContent =
+            "New password must contain at least 6 characters.";
+
+        return;
+
+    }
+
+
+    /* Confirm */
+
+    if (newPassword !== confirm) {
+
+        message.textContent =
+            "The new passwords do not match.";
+
+        return;
+
+    }
+
+
+    /* Save */
+
+    localStorage.setItem(
+        PASSWORD_KEY,
+        newPassword
+    );
+
+
+    message.style.color =
+        "var(--success)";
+
+    message.textContent =
+        "Password changed successfully.";
+
+
+    setTimeout(function() {
+
+        closePasswordModal();
+
+    }, 1000);
+
+}
+
+
+/* =====================================================
+   PROGRESS STORAGE
+===================================================== */
+
+const STORAGE_KEY =
+    "momentum_progress_v2";
+
+
+let completedDays =
+    JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+        || "[]"
+    );
+
+
+let currentCalendarDate =
+    new Date();
+
+
+/* =====================================================
+   DATE KEY
+===================================================== */
+
+function dateKey(date) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1)
+        .padStart(2,"0");
+
+    const day =
+        String(date.getDate())
+        .padStart(2,"0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveData() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(completedDays)
+    );
+
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+function renderCalendar() {
+
+    const calendar =
+        document.getElementById("calendar");
+
+
+    calendar.innerHTML = "";
+
+
+    const year =
+        currentCalendarDate.getFullYear();
+
+    const month =
+        currentCalendarDate.getMonth();
+
+
+    const monthName =
+        currentCalendarDate.toLocaleString(
+            "default",
+            {
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    document.getElementById("calendarTitle")
+        .textContent = monthName;
+
+
+    const dayNames =
+        [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ];
+
+
+    dayNames.forEach(function(day) {
+
+        const element =
+            document.createElement("div");
+
+        element.className =
+            "day-name";
+
+        element.textContent =
+            day;
+
+        calendar.appendChild(element);
+
+    });
+
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    const daysInMonth =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    /* Empty cells */
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+        const empty =
+            document.createElement("div");
+
+        calendar.appendChild(empty);
+
+    }
+
+
+    /* Days */
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+
+        const key =
+            dateKey(date);
+
+
+        const element =
+            document.createElement("div");
+
+
+        element.className =
+            "day";
+
+
+        if (
+            completedDays.includes(key)
+        ) {
+
+            element.classList.add(
+                "completed"
+            );
+
+        }
+
+
+        element.innerHTML = `
+            <div class="day-number">
+                ${day}
+            </div>
+        `;
+
+
+        element.onclick =
+            function() {
+
+                toggleDay(key);
+
+            };
+
+
+        calendar.appendChild(element);
+
+    }
+
+}
+
+
+/* =====================================================
+   TOGGLE DAY
+===================================================== */
+
+function toggleDay(key) {
+
+    const index =
+        completedDays.indexOf(key);
+
+
+    if (index === -1) {
+
+        completedDays.push(key);
+
+    } else {
+
+        completedDays.splice(index,1);
+
+    }
+
+
+    saveData();
+
+    renderCalendar();
+
+    updateStats();
+
+}
+
+
+/* =====================================================
+   CURRENT STREAK
+===================================================== */
+
+function calculateCurrentStreak() {
+
+    if (
+        completedDays.length === 0
+    ) {
+        return 0;
+    }
+
+
+    const dates =
+        completedDays
+        .map(function(d) {
+
+            return new Date(
+                d + "T00:00:00"
+            );
+
+        })
+        .sort(function(a,b) {
+
+            return b-a;
+
+        });
+
+
+    const today =
+        new Date();
+
+    today.setHours(
+        0,0,0,0
+    );
+
+
+    const latest =
+        dates[0];
+
+
+    const difference =
+        Math.floor(
+            (
+                today - latest
+            ) /
+            (1000*60*60*24)
+        );
+
+
+    if (difference > 1) {
+        return 0;
+    }
+
+
+    let streak = 1;
+
+
+    for (
+        let i=0;
+        i<dates.length-1;
+        i++
+    ) {
+
+        const diff =
+            Math.round(
+                (
+                    dates[i]
+                    -
+                    dates[i+1]
+                ) /
+                (1000*60*60*24)
+            );
+
+
+        if (diff === 1) {
+
+            streak++;
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+
+    return streak;
+
+}
+
+
+/* =====================================================
+   BEST STREAK
+===================================================== */
+
+function calculateBestStreak() {
+
+    if (
+        completedDays.length === 0
+    ) {
+        return 0;
+    }
+
+
+    const sorted =
+        [...completedDays].sort();
+
+
+    let best = 1;
+
+    let current = 1;
+
+
+    for (
+        let i=1;
+        i<sorted.length;
+        i++
+    ) {
+
+        const previous =
+            new Date(
+                sorted[i-1]
+                + "T00:00:00"
+            );
+
+
+        const currentDate =
+            new Date(
+                sorted[i]
+                + "T00:00:00"
+            );
+
+
+        const difference =
+            Math.round(
+                (
+                    currentDate
+                    -
+                    previous
+                ) /
+                (1000*60*60*24)
+            );
+
+
+        if (
+            difference === 1
+        ) {
+
+            current++;
+
+        } else {
+
+            current = 1;
+
+        }
+
+
+        best =
+            Math.max(
+                best,
+                current
+            );
+
+    }
+
+
+    return best;
+
+}
+
+
+/* =====================================================
+   MILESTONE
+===================================================== */
+
+function getNextMilestone(streak) {
+
+    const milestones =
+        [
+            7,
+            14,
+            30,
+            60,
+            90,
+            180,
+            365,
+            500,
+            730,
+            1000
+        ];
+
+
+    for (
+        const milestone
+        of milestones
+    ) {
+
+        if (
+            streak < milestone
+        ) {
+
+            return milestone;
+
+        }
+
+    }
+
+
+    return "∞";
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+function updateStats() {
+
+    const current =
+        calculateCurrentStreak();
+
+
+    const best =
+        calculateBestStreak();
+
+
+    const total =
+        completedDays.length;
+
+
+    document.getElementById(
+        "currentStreak"
+    ).textContent = current;
+
+
+    document.getElementById(
+        "bestStreak"
+    ).textContent = best;
+
+
+    document.getElementById(
+        "totalDays"
+    ).textContent = total;
+
+
+    document.getElementById(
+        "milestone"
+    ).textContent =
+        getNextMilestone(current);
+
+
+    /* Timeline */
+
+    const start =
+        new Date(
+            "2026-10-06T00:00:00"
+        );
+
+
+    const end =
+        new Date(
+            "2028-12-31T00:00:00"
+        );
+
+
+    const totalPeriod =
+        Math.round(
+            (
+                end-start
+            ) /
+            (1000*60*60*24)
+        ) + 1;
+
+
+    const percentage =
+        Math.min(
+            100,
+            (
+                total /
+                totalPeriod
+            ) * 100
+        );
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
+        percentage + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        percentage.toFixed(1) + "%";
+
+}
+
+
+/* =====================================================
+   MOTIVATIONAL QUOTES
+===================================================== */
+
+const quotes = [
+
+"Discipline is choosing what you want most over what you want now.",
+
+"Your future is built by what you repeatedly do today.",
+
+"Small victories become extraordinary lives.",
+
+"Do not wait for motivation. Build discipline.",
+
+"Every difficult day you overcome becomes part of your strength.",
+
+"The person you become is worth the effort you are making.",
+
+"Your goals do not need perfection. They need consistency.",
+
+"One strong decision can change the direction of an entire day.",
+
+"Control your actions and your actions will shape your future.",
+
+"Progress may be quiet, but it is never meaningless.",
+
+"Keep going. Your future self is watching.",
+
+"Discipline turns potential into reality.",
+
+"Make today's decision something tomorrow's you will be proud of.",
+
+"You don't need to be extraordinary today. You need to keep moving.",
+
+"Every time you resist an old habit, you strengthen a new identity.",
+
+"Your mind becomes stronger every time you choose discipline.",
+
+"Do the difficult thing now. Thank yourself later.",
+
+"Consistency beats intensity when intensity cannot last.",
+
+"Your destination matters, but so does the person you become on the way.",
+
+"Nothing changes until your daily choices change.",
+
+"Build quietly. Let your results speak.",
+
+"Your future deserves more than temporary comfort.",
+
+"One day at a time is still progress.",
+
+"Strength is built through decisions nobody else sees.",
+
+"Don't negotiate with the version of yourself you are trying to outgrow.",
+
+"Your habits are votes for the person you want to become.",
+
+"Stay patient. Great things take repeated effort.",
+
+"The hardest step is often simply beginning again.",
+
+"Be stronger than your excuses.",
+
+"Your discipline today becomes your freedom tomorrow.",
+
+"Keep your eyes on the reason you started.",
+
+"You are capable of more than your impulses suggest.",
+
+"Protect your attention. It shapes your life.",
+
+"Make your standards stronger than your temptations.",
+
+"Every sunrise gives you another chance to choose wisely.",
+
+"Do not count the days. Make the days count.",
+
+"The road becomes easier when you stop turning around.",
+
+"Your greatest competition is yesterday's version of yourself.",
+
+"Progress requires patience with yourself and honesty with your habits.",
+
+"Your dreams need your discipline more than your wishes.",
+
+"Keep showing up, especially when nobody is watching.",
+
+"A strong life is built from strong ordinary days.",
+
+"Choose long-term respect over short-term pleasure.",
+
+"Your actions today are creating memories your future self will live with.",
+
+"Become someone your younger self would admire.",
+
+"Every setback can become information if you refuse to make it your identity.",
+
+"Focus on the next right decision.",
+
+"Your future is not decided by one day, but by what you repeat.",
+
+"Discipline is freedom from constantly being controlled by impulses."
+
+];
+
+
+/* =====================================================
+   DAILY QUOTE
+===================================================== */
+
+function getDailyQuote() {
+
+    const today =
+        new Date();
+
+
+    const start =
+        new Date(
+            "2026-10-06T00:00:00"
+        );
+
+
+    const dayNumber =
+        Math.floor(
+            (
+                today-start
+            ) /
+            (1000*60*60*24)
+        );
+
+
+    const index =
+        Math.abs(dayNumber)
+        % quotes.length;
+
+
+    return quotes[index];
+
+}
+
+
+function updateQuote() {
+
+    document.getElementById(
+        "dailyQuote"
+    ).textContent =
+        "“" +
+        getDailyQuote() +
+        "”";
+
+
+    document.getElementById(
+        "quoteDate"
+    ).textContent =
+        new Date().toLocaleDateString(
+            "en-IN",
+            {
+                weekday:"long",
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+}
+
+
+/* =====================================================
+   CALENDAR NAVIGATION
+===================================================== */
+
+function changeMonth(amount) {
+
+    currentCalendarDate.setMonth(
+        currentCalendarDate.getMonth()
+        + amount
+    );
+
+
+    renderCalendar();
+
+}
+
+
+function goToday() {
+
+    currentCalendarDate =
+        new Date();
+
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+function updateHeaderDate() {
+
+    document.getElementById(
+        "headerDate"
+    ).textContent =
+        new Date().toLocaleDateString(
+            "en-IN",
+            {
+                weekday:"short",
+                day:"numeric",
+                month:"short",
+                year:"numeric"
+            }
+        );
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetData() {
+
+    const confirmed =
+        confirm(
+            "Reset all progress? This cannot be undone."
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    completedDays = [];
+
+
+    saveData();
+
+    renderCalendar();
+
+    updateStats();
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+function initialize() {
+
+    updateHeaderDate();
+
+    updateQuote();
+
+    renderCalendar();
+
+    updateStats();
+
+}
+
+
+/* =====================================================
+   AUTO UPDATE
+===================================================== */
+
+setInterval(
+    function() {
+
+        updateHeaderDate();
+
+        updateQuote();
+
+        updateStats();
+
+    },
+    60000
+);
+
+</script>
+
+</body>
+</html>
